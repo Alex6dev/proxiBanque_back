@@ -28,20 +28,6 @@ public class ClientController {
 	public ClientController(ClientService clientService) {
 		this.clientService = clientService;
 	}
-/**
- * 
- * @param clientId
- * @return
- */
-	@GetMapping("/client/{id}")
-	public ResponseEntity<Client> findClientById(@PathVariable(value = "id") Long clientId) {
-		Optional<Client> clientData = clientService.findClientById(clientId);
-
-		if (clientData.isPresent())
-			return ResponseEntity.ok(clientData.get());
-		else
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-	}
 
 	@PostMapping("/clients")
 	public ResponseEntity<List<Client>> findClientsByAdvisorId(@RequestBody Long advisorId) {

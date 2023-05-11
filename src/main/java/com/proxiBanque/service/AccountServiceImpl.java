@@ -18,16 +18,13 @@ import com.proxiBanque.model.CheckingAccount;
 import com.proxiBanque.repository.AccountRepository;
 
 @Service
-public class AccountService {
+public class AccountServiceImpl implements IAccountService{
 	private AccountRepository accountRepository;
 
-	public AccountService(AccountRepository accountRepository) {
+	public AccountServiceImpl(AccountRepository accountRepository) {
 		this.accountRepository = accountRepository;
 	}
 
-	public Optional<Account> findAccountById(Long accountId) {
-		return accountRepository.findById(accountId);
-	}
 
 	public List<Account> findAccountsByClientId(Long clientId) {
 		return accountRepository.findByOwnerId(clientId);

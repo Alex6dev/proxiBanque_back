@@ -23,16 +23,7 @@ public class IAdvisorImpl implements IAdvisorService {
 		this.advisorRepository = advisorRepository;
 	}
 
-	/**
-	 * @param id
-	 * @return object Advisor find with id
-	 */
 
-	@Override
-	public Optional<Advisor> findAdvisorById(Long id) {
-		
-		return advisorRepository.findById(id);
-	}
 
 	/**
 	 * 

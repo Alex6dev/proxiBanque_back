@@ -23,7 +23,7 @@ import com.proxiBanque.exception.DebitorAccountNotFoundException;
 import com.proxiBanque.exception.InsufficientBalanceException;
 import com.proxiBanque.exception.NegativeAmountException;
 import com.proxiBanque.model.Account;
-import com.proxiBanque.service.AccountService;
+import com.proxiBanque.service.AccountServiceImpl;
 
 @CrossOrigin
 @RestController
@@ -32,20 +32,10 @@ public class AccountController {
 
 	private static final Logger logger= ProxiBanqueApplication.logger;
 
-	private AccountService accountService;
+	private AccountServiceImpl accountService;
 
-	public AccountController(AccountService accountService) {
+	public AccountController(AccountServiceImpl accountService) {
 		this.accountService = accountService;
-	}
-
-	@GetMapping("/account/{id}")
-	public ResponseEntity<Account> findAccountById(@PathVariable(value = "id") Long accountId) {
-		Optional<Account> accountData = accountService.findAccountById(accountId);
-
-		if (accountData.isPresent())
-			return ResponseEntity.ok(accountData.get());
-		else
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
 
 	@PostMapping("/accounts")

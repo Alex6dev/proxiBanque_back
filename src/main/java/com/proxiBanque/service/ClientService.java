@@ -17,7 +17,7 @@ import com.proxiBanque.repository.AdvisorRepository;
 import com.proxiBanque.repository.ClientRepository;
 
 @Service
-public class ClientService {
+public class ClientService implements IClientService{
 	private ClientRepository clientRepository;
 	private AdvisorRepository advisorRepository;
 	private AccountRepository accountRepository;
@@ -26,10 +26,6 @@ public class ClientService {
 		this.clientRepository = clientRepository;
 		this.advisorRepository = advisorRepository;
 		this.accountRepository = accountRepository;
-	}
-
-	public Optional<Client> findClientById(Long clientId) {
-		return clientRepository.findById(clientId);
 	}
 
 	public List<Client> findClientsByAdvisorId(Long advisorId) {
